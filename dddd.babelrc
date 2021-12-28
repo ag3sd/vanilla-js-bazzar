@@ -1,0 +1,22 @@
+{
+	"presets": [
+		"env",
+		[
+			"@babel/env",
+			{
+				"targets": {
+					"node": "current"
+				}
+			}
+		]
+	],
+	"plugins": [
+		[
+			"@babel/plugin-transform-runtime",
+			{
+				"corejs": 2,
+				"regenerator": true
+			}
+		]
+	]
+}
