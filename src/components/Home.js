@@ -1,5 +1,5 @@
-import service from "../service";
 import { loop } from "../utilities";
+import { Data, Screens, service } from "../service";
 
 
 const Home = async () => {
@@ -12,7 +12,7 @@ const Home = async () => {
         <section>
             <h2>${item.name}</h2>
             <p>${item.description}</p>
-            <button class="action-btn">Explore ${item.key}</button>
+            <button data-id="${item.id}" class="explore-btn action-btn">Explore ${item.key}</button>
         </section>
     </section>  
 `;
@@ -67,5 +67,12 @@ const HomeInit = () => {
         timer = setTimeout(startSlideShow, 2000);
     }
     startSlideShow();
+    document.querySelectorAll('.explore-btn').forEach(e => {
+        e.onclick = (event) => {
+            service.set(Data.SCREEN, Screens.Products);
+            service.set(Data.CATEGORY, event.target.dataset.id);
+            service.AppRefresh();
+        }
+    })
 }
 export { Home, HomeInit };

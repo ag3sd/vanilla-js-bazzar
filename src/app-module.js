@@ -2,7 +2,7 @@ import User from './components/User'
 import { Nav, NavInit } from './components/Nav';
 import { Home, HomeInit } from './components/Home';
 import Layout from './layout';
-import service from './service';
+import { service } from "./service";
 import { Products, ProductsInit } from './components/Products';
 import { Cart, CartInit } from './components/Cart';
 const AsyncFunction = (async () => { }).constructor;

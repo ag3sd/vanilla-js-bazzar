@@ -1,8 +1,19 @@
 import axios from 'axios';
 
+const Screens = Object.freeze({
+    Home: Symbol("home"),
+    Products: Symbol("products"),
+});
+const Data = Object.freeze({
+    SCREEN: Symbol("SCREEN"),
+    CATEGORY: Symbol("CATEGORY"),
+});
 class Service {
 
-    currentScreen = 'home';
+    current = {
+        [Data.SCREEN]: Screens.Home,
+        [Data.CATEGORY]: ''
+    };
     catogories = [];
     products = [];
     offers = [];
@@ -12,8 +23,8 @@ class Service {
     constructor() {
 
     }
-    changeScreen(name) {
-        this.currentScreen = name;
+    set(name, value) {
+        this.current[name] = value;
     }
     getCart() {
         return this.cart;
@@ -54,4 +65,4 @@ class Service {
 }
 
 const service = new Service();
-export default service;
+export { Screens, service, Data };

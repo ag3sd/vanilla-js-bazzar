@@ -1,6 +1,6 @@
-import service from "../service";
+import { Data, Screens, service } from "../service";
 
-const navigate = (name) => service.changeScreen(name);
+const navigate = (name) => service.set(Data.SCREEN, name);
 const Nav = async () => {
     let cartItems = service.getCart();
     const cartItemIds = Object.keys(cartItems);
@@ -49,7 +49,7 @@ const Nav = async () => {
 function NavInit() {
     const clickFuntions = {
         '#home-nav': () => {
-            navigate('home');
+            navigate(Screens.Home);
             service.AppRefresh();
         },
         '#cart': (event) => {
@@ -62,13 +62,12 @@ function NavInit() {
 
         },
         '#products-nav': () => {
-            navigate('products');
+            navigate(Screens.Products);
             service.AppRefresh();
         },
 
     }
     Object.keys(clickFuntions).forEach((id) => {
-        console.log(id)
         document.querySelector(id).onclick = clickFuntions[id];
     })
 

@@ -1,4 +1,4 @@
-import service from "./service";
+import { Data, Screens, service } from "./service";
 import { showIf } from "./utilities";
 
 
@@ -9,14 +9,16 @@ function Layout() {
       document.getElementById('cartModal').style.display = "none";
     }
   }
-
   return `
   <nav-details></nav-details>
     <div class="container">
-    ${showIf(service.currentScreen === 'home', '<home-details></home-details>')}
-    ${showIf(service.currentScreen === 'products', '<products-details></products-details>')}
+    ${showIf(service.current[Data.SCREEN] === Screens.Home, '<home-details></home-details>')}
+    ${showIf(service.current[Data.SCREEN] === Screens.Products, '<products-details></products-details>')}
     
     </div>
+    <footer>
+    Copyright 2011-2018 Sabka Bazaar Grocery Supplies Pvt Ltd
+    </footer>
   `
 
 }
